@@ -94,7 +94,7 @@
 		$result = mysqli_query($connection, $sql);
 
 		if (mysqli_num_rows($result) == 1) {
-			$query = "SELECT * FROM Students";
+			$query = "SELECT * FROM Students ORDER BY first ASC";
 			$result = mysqli_query($connection, $query);
 
 			echo "<br><h3>List of students:</h3><ul>";
