@@ -36,7 +36,8 @@
 	require_once('dbsecrets.php');
 
 	// Discard the results without fetching or processing them
-	function discardResult($connection) {
+	function discardResult($connection)
+	{
 		while (mysqli_next_result($connection)) {
 			if ($result = mysqli_store_result($connection)) {
 				mysqli_free_result($result);
@@ -44,7 +45,8 @@
 		}
 	}
 
-	function resetData($connection) {
+	function resetData($connection)
+	{
 		$query = "
         DROP TABLE IF EXISTS Students;
         
@@ -91,34 +93,34 @@
 				discardResult($connection);
 			}
 		}
-
-		//check if table exists
-		$sql = "SHOW TABLES LIKE 'Students'";
-		$result = mysqli_query($connection, $sql);
-
-		if (mysqli_num_rows($result) == 1) {
-			$query = "SELECT * FROM Students ORDER BY first ASC";
-			$result = mysqli_query($connection, $query);
-
-			echo "<br><h3>List of students:</h3><ul>";
-			// Fetch data
-			$count = 0;
-			while ($row = mysqli_fetch_assoc($result)) {
-				// Display student data (for demonstration)
-				echo "<li>" . $row['first'] . "</li>";
-				$count++;
-			}
-			echo "</ul>";
-			//limit to only allow 20 student records
-			if ($count > 20) {
-				resetData($connection);
-			}
-		} else {
-			echo "<br><h2>Error: No Students table found!<br>Reset the table to perform further tasks.</h2>";
-		}
-		// Close statement and connection
-		mysqli_close($connection);
 	}
+	//check if table exists
+	$sql = "SHOW TABLES LIKE 'Students'";
+	$result = mysqli_query($connection, $sql);
+
+	if (mysqli_num_rows($result) == 1) {
+		$query = "SELECT * FROM Students ORDER BY first ASC";
+		$result = mysqli_query($connection, $query);
+
+		echo "<br><h3>List of students:</h3><ul>";
+		// Fetch data
+		$count = 0;
+		while ($row = mysqli_fetch_assoc($result)) {
+			// Display student data (for demonstration)
+			echo "<li>" . $row['first'] . "</li>";
+			$count++;
+		}
+		echo "</ul>";
+		//limit to only allow 20 student records
+		if ($count > 20) {
+			resetData($connection);
+		}
+	} else {
+		echo "<br><h2>Error: No Students table found!<br>Reset the table to perform further tasks.</h2>";
+	}
+	// Close statement and connection
+	mysqli_close($connection);
+
 	?>
 </body>
 
