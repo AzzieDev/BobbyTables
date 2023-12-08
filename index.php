@@ -9,7 +9,7 @@
 	<h1>Demonstrate SQL Injection with Bobby Tables</h1>
 	<p><button onclick="populateForm(1)">Robert'); DROP TABLE Students; -- </button>
 		<br>
-	<form id="form" action="#" method="post">
+	<form id="form" action="" method="post">
 		<label for="student_name">Enter Student Name:</label>
 		<br>
 		<input type="text" id="student_name" name="student_name" style="width: 300px;"><br>
