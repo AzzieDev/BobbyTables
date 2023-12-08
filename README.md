@@ -10,10 +10,12 @@ This repository contains a simple PHP script that shows how SQL injection can be
 - Install PHP 8.2 or higher on your machine
 - Install MySQL or any compatible database server
 - Create a database and edit the `dbsecrets.php` file and enter your database credentials
-- Run the `index.html` file on your web server or using a built-in PHP server
-- Enter "reset" as a student name in the form to generate a table and populate it with sample data
+- Run the `index.php` file on your web server or using a built-in PHP server
+- Enter "reset" or click the Reset button in the form to generate a table and populate it with sample data
 - Enter a student name in the form and see the results change
-- Try entering some malicious inputs such as the pre-filled `Robert'); DROP TABLE students; --` and see what happens
+- Try entering some malicious inputs or click the  `Robert'); DROP TABLE students; --` button and see what happens
+- Test with the Sanitize Input option enabled and disabled
+- Applicable SQL statements are displayed on screen
 
 ## How to prevent SQL injection
 - Use prepared statements and parameterized queries instead of concatenating user inputs into SQL queries
